@@ -2,19 +2,15 @@ import React, { Component } from 'react';
 
 import styles from './index.module.css';
 import { SocialLinks } from '../components';
-
 import BackgroundImage from '../assets/images/unsplash1500.png';
-
-require('sanitize.css');
-require('../assets/styles/global.css');
 
 export default class HomePage extends Component {
   constructor(props) {
     super(props);
 
     this.state = { show: false };
-    this.getContainerStyles = this.getContainerStyles.bind(this);
-    this.getLoadedImageStyles = this.getLoadedImageStyles.bind(this);
+    this.getLoadedImageStyle = this.getLoadedImageStyle.bind(this);
+    this.getLoadedStyle = this.getLoadedStyle.bind(this);
   }
 
   componentDidMount() {
@@ -28,16 +24,16 @@ export default class HomePage extends Component {
     };
   }
 
-  getContainerStyles() {
-    return (this.state.show)
-      ? [styles.container, styles.isLoaded].join(' ')
-      : styles.container;
+  getLoadedImageStyle() {
+    return (typeof this.state.image === 'undefined')
+      ? {}
+      : { opacity: 1 };
   }
 
-  getLoadedImageStyles() {
-    return (typeof this.state.image === 'undefined')
-      ? styles.loaded
-      : [styles.loaded, styles.imageFadeIn].join(' ');
+  getLoadedStyle() {
+    return (this.state.show)
+      ? { opacity: 1, top: 0 }
+      : {};
   }
 
   render() {
@@ -51,15 +47,15 @@ export default class HomePage extends Component {
     ];
 
     return (
-      <div className={ this.getContainerStyles() }>
+      <div className={ styles.container }>
         <div className={ styles.preload } />
-        <div className={ this.getLoadedImageStyles() } />
+        <div className={ styles.loaded } style={ this.getLoadedImageStyle() } />
 
-        <header className={ styles.header }>
+        <header className={ styles.header } style={ this.getLoadedStyle() }>
           <h1 className={ styles.hero }>Alex Nelson</h1>
           <p className={ styles.caption }>{ caption }</p>
         </header>
-        <div className={ styles.linkContainer }>
+        <div className={ styles.linkContainer } style={ this.getLoadedStyle() }>
           <SocialLinks accounts={ accounts } />
         </div>
       </div>
