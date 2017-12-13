@@ -16,20 +16,21 @@
   top: 0;
   left: 0;
   right: 0;
-  background-attachment: fixed, fixed;
   background-repeat: no-repeat;
-  background-position-y: top;
-  background-position-x: center;
+  background-position: center center;
+  background-size: auto, cover;
 }
 
 .container > .preload {
-  background-size: cover;
+  background-color: #25465A;
+  background-image: linear-gradient(to top, rgba(92, 177, 255, 0.5), rgba(92, 177, 255, 0.3)), url(../assets/images/unsplash200.png);
+  overflow: hidden;
 }
 
 .container > .loaded {
-  background-size: auto, cover;
-  opacity: 0;
+  background-image: linear-gradient(to top, rgba(92, 177, 255, 0.5), rgba(92, 177, 255, 0.3)), url(../assets/images/unsplash1500.png);
   transition: opacity 1s ease-in;
+  opacity: 0;
 }
 
 .container > .imageFadeIn {
@@ -54,7 +55,7 @@
   position: relative;
   top: 250px;
   opacity: 0;
-  transition: opacity 0.5s ease-in 0.5s, top 0.8s linear;
+  transition: opacity 0.6s ease-in 0.5s, top 0.8s linear;
 }
 
 .isLoaded > .header {

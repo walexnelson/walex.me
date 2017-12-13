@@ -3,22 +3,12 @@ import React, { Component } from 'react';
 import styles from './index.module.css';
 import { SocialLinks } from '../components';
 
-import PreloadImage from '../assets/images/unsplash50.png';
 import BackgroundImage from '../assets/images/unsplash1500.png';
 
 require('sanitize.css');
 require('../assets/styles/global.css');
 
-function getBackgroundStyles(image) {
-  const rgba = 'rgba(92, 177, 255, 0.3)';
-
-  return {
-    backgroundImage: `linear-gradient(to top, ${rgba}, ${rgba}), url(${image})`,
-  };
-}
-
 export default class HomePage extends Component {
-
   constructor(props) {
     super(props);
 
@@ -62,8 +52,8 @@ export default class HomePage extends Component {
 
     return (
       <div className={ this.getContainerStyles() }>
-        <div className={ styles.preload } style={ getBackgroundStyles(PreloadImage) } />
-        <div className={ this.getLoadedImageStyles() } style={ getBackgroundStyles(this.state.image) } />
+        <div className={ styles.preload } />
+        <div className={ this.getLoadedImageStyles() } />
 
         <header className={ styles.header }>
           <h1 className={ styles.hero }>Alex Nelson</h1>
