@@ -1,3 +1,6 @@
 module.exports = {
-  plugins: [],
+  siteMetadata: {
+    title: 'walex',
+  },
+  plugins: ['gatsby-plugin-react-helmet'],
 };
