@@ -1,33 +1,58 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import styles from './index.module.css';
 import { SocialLinks } from '../components';
 
-import BackgroundImage from '../assets/images/unsplash.jpg';
+import PreloadImage from '../assets/images/unsplash50.png';
+import BackgroundImage from '../assets/images/unsplash1500.png';
 
 require('sanitize.css');
 require('../assets/styles/global.css');
 
-export default () => {
-  const rgba = 'rgba(92, 177, 255, 0.3)';
-  const url = `linear-gradient(to top, ${rgba}, ${rgba}), url(${BackgroundImage})`;
-  const caption = 'Software Architect @ Domo  •  Building Cool Stuff with ReactJS';
-  const accounts = [
-    { name: 'Twitter', link: 'https://twitter.com/w_alexnelson', fa: 'fa-twitter' },
-    { name: 'Instagram', link: 'https://www.instagram.com/walexnelson', fa: 'fa-instagram' },
-    { name: 'Facebook', link: 'https://www.facebook.com/walexnelson', fa: 'fa-facebook' },
-    { name: 'Github', link: 'https://github.com/walexnelson', fa: 'fa-github' },
-  ];
+export default class HomePage extends Component {
+  constructor(props) {
+    super(props);
 
-  return (
-    <div className={ styles.container } style={ { backgroundImage: url } }>
-      <header className={ styles.header }>
-        <h1 className={ styles.hero }>Alex Nelson</h1>
-        <p className={ styles.caption }>{ caption }</p>
-      </header>
-      <div className={ styles.linkContainer }>
-        <SocialLinks accounts={ accounts } />
+    this.state = {};
+  }
+
+  componentDidMount() {
+    const hdLoaderImg = new Image();
+    hdLoaderImg.src = BackgroundImage;
+
+    hdLoaderImg.onload = () => {
+      this.setState({ image: BackgroundImage });
+    };
+  }
+
+  render() {
+    const { image } = this.state;
+
+    const rgba = 'rgba(92, 177, 255, 0.3)';
+    const url = `linear-gradient(to top, ${rgba}, ${rgba}), url(${image})`;
+    const caption = 'Software Architect @ Domo  •  Building Cool Stuff with ReactJS';
+
+    const accounts = [
+      { name: 'Twitter', link: 'https://twitter.com/w_alexnelson', fa: 'fa-twitter' },
+      { name: 'Instagram', link: 'https://www.instagram.com/walexnelson', fa: 'fa-instagram' },
+      { name: 'Facebook', link: 'https://www.facebook.com/walexnelson', fa: 'fa-facebook' },
+      { name: 'LinkedIn', link: 'https://www.linkedin.com/in/walexnelson/', fa: 'fa-linkedin' },
+      { name: 'Github', link: 'https://github.com/walexnelson', fa: 'fa-github' },
+    ];
+
+    return (
+      <div className={ styles.container }>
+        <div className={ styles.preload } style={{ backgroundImage: `url('${PreloadImage}')` }} />
+        <div className={ styles.loaded } style={{ backgroundImage: url }} />
+
+        <header className={ styles.header }>
+          <h1 className={ styles.hero }>Alex Nelson</h1>
+          <p className={ styles.caption }>{ caption }</p>
+        </header>
+        <div className={ styles.linkContainer }>
+          <SocialLinks accounts={ accounts } />
+        </div>
       </div>
-    </div>
-  );
-};
+    );
+  }
+}
