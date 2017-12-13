@@ -16,12 +16,24 @@
   top: 0;
   left: 0;
   right: 0;
-  background-color: #555;
   background-attachment: fixed, fixed;
   background-repeat: no-repeat;
-  background-size: auto, cover;
   background-position-y: top;
   background-position-x: center;
+}
+
+.container > .preload {
+  background-size: cover;
+}
+
+.container > .loaded {
+  background-size: auto, cover;
+  opacity: 0;
+  transition: opacity 2s ease-in-out;
+}
+
+.container > .imageFadeIn {
+  opacity: 1;
 }
 
 .linkContainer {

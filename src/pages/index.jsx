@@ -27,11 +27,15 @@ export default class HomePage extends Component {
 
   render() {
     const { image } = this.state;
+    const classes = (typeof image === 'undefined')
+      ? styles.loaded
+      : [styles.loaded, styles.imageFadeIn].join(' ');
 
     const rgba = 'rgba(92, 177, 255, 0.3)';
-    const url = `linear-gradient(to top, ${rgba}, ${rgba}), url(${image})`;
-    const caption = 'Software Architect @ Domo  •  Building Cool Stuff with ReactJS';
+    const preloadURL = `linear-gradient(to top, ${rgba}, ${rgba}), url(${PreloadImage})`;
+    const loadURL = `linear-gradient(to top, ${rgba}, ${rgba}), url(${image})`;
 
+    const caption = 'Software Architect @ Domo  •  Building Cool Stuff with ReactJS';
     const accounts = [
       { name: 'Twitter', link: 'https://twitter.com/w_alexnelson', fa: 'fa-twitter' },
       { name: 'Instagram', link: 'https://www.instagram.com/walexnelson', fa: 'fa-instagram' },
@@ -42,8 +46,8 @@ export default class HomePage extends Component {
 
     return (
       <div className={ styles.container }>
-        <div className={ styles.preload } style={{ backgroundImage: `url('${PreloadImage}')` }} />
-        <div className={ styles.loaded } style={{ backgroundImage: url }} />
+        <div className={ styles.preload } style={{ backgroundImage: preloadURL }} />
+        <div className={ classes } style={{ backgroundImage: loadURL }} />
 
         <header className={ styles.header }>
           <h1 className={ styles.hero }>Alex Nelson</h1>
