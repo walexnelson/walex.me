@@ -1,0 +1,58 @@
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  background-color: #555;
+  background-attachment: fixed, fixed;
+  background-repeat: no-repeat;
+  background-size: auto, cover;
+  background-position-y: top;
+  background-position-x: center;
+
+  color: #FFF;
+}
+
+.linkContainer {
+  width: 50%;
+  max-width: 450px;
+}
+
+.header {
+  width: 50%;
+  max-width: 600px;
+  text-align: center;
+}
+
+.header > .hero {
+  font-size: 4.3em;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1em;
+}
+
+.header > .caption {
+  font-size: 1.25em;
+  margin: 0.75em 0 0.25em 0;
+  opacity: 0.75;
+}
+
+
+@media screen and (max-width: 750px) {
+  .header, .linkContainer {
+    width: 100%;
+    max-width: 100%;
+    padding: 0 10px;
+  }
+
+  .header > .hero {
+    font-size: 3.5em;
+  }
+
+  .header > .caption {
+    font-size: 1em;
+  }
+}
