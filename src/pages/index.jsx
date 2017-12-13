@@ -9,14 +9,27 @@ import BackgroundImage from '../assets/images/unsplash1500.png';
 require('sanitize.css');
 require('../assets/styles/global.css');
 
+function getBackgroundStyles(image) {
+  const rgba = 'rgba(92, 177, 255, 0.3)';
+
+  return {
+    backgroundImage: `linear-gradient(to top, ${rgba}, ${rgba}), url(${image})`,
+  };
+}
+
 export default class HomePage extends Component {
+
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = { show: false };
+    this.getContainerStyles = this.getContainerStyles.bind(this);
+    this.getLoadedImageStyles = this.getLoadedImageStyles.bind(this);
   }
 
   componentDidMount() {
+    setTimeout(() => { this.setState({ show: true }); }, 2500);
+
     const hdLoaderImg = new Image();
     hdLoaderImg.src = BackgroundImage;
 
@@ -25,16 +38,19 @@ export default class HomePage extends Component {
     };
   }
 
-  render() {
-    const { image } = this.state;
-    const classes = (typeof image === 'undefined')
+  getContainerStyles() {
+    return (this.state.show)
+      ? [styles.container, styles.isLoaded].join(' ')
+      : styles.container;
+  }
+
+  getLoadedImageStyles() {
+    return (typeof this.state.image === 'undefined')
       ? styles.loaded
       : [styles.loaded, styles.imageFadeIn].join(' ');
+  }
 
-    const rgba = 'rgba(92, 177, 255, 0.3)';
-    const preloadURL = `linear-gradient(to top, ${rgba}, ${rgba}), url(${PreloadImage})`;
-    const loadURL = `linear-gradient(to top, ${rgba}, ${rgba}), url(${image})`;
-
+  render() {
     const caption = 'Software Architect @ Domo  •  Building Cool Stuff with ReactJS';
     const accounts = [
       { name: 'Twitter', link: 'https://twitter.com/w_alexnelson', fa: 'fa-twitter' },
@@ -45,9 +61,9 @@ export default class HomePage extends Component {
     ];
 
     return (
-      <div className={ styles.container }>
-        <div className={ styles.preload } style={{ backgroundImage: preloadURL }} />
-        <div className={ classes } style={{ backgroundImage: loadURL }} />
+      <div className={ this.getContainerStyles() }>
+        <div className={ styles.preload } style={ getBackgroundStyles(PreloadImage) } />
+        <div className={ this.getLoadedImageStyles() } style={ getBackgroundStyles(this.state.image) } />
 
         <header className={ styles.header }>
           <h1 className={ styles.hero }>Alex Nelson</h1>

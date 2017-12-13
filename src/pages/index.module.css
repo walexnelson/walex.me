@@ -29,33 +29,47 @@
 .container > .loaded {
   background-size: auto, cover;
   opacity: 0;
-  transition: opacity 2s ease-in-out;
+  transition: opacity 1s ease-in;
 }
 
 .container > .imageFadeIn {
   opacity: 1;
 }
 
-.linkContainer {
+.container > .linkContainer {
   width: 50%;
   max-width: 450px;
+  opacity: 0;
+  transition: opacity 1.5s ease-in 0.7s;
 }
 
-.header {
+.isLoaded > .linkContainer {
+  opacity: 1;
+}
+
+.container > .header {
   width: 50%;
   max-width: 600px;
   text-align: center;
   position: relative;
+  top: 250px;
+  opacity: 0;
+  transition: opacity 0.5s ease-in 0.5s, top 0.8s linear;
 }
 
-.header > .hero {
+.isLoaded > .header {
+  opacity: 1;
+  top: 0;
+}
+
+.container > .header > .hero {
   font-size: 4.3em;
   font-weight: 900;
   letter-spacing: -0.03em;
   line-height: 1em;
 }
 
-.header > .caption {
+.container > .header > .caption {
   font-size: 1.25em;
   margin: 0.75em 0 0.25em 0;
   opacity: 0.75;
@@ -63,17 +77,17 @@
 
 
 @media screen and (max-width: 750px) {
-  .header, .linkContainer {
+  .container > .header, .linkContainer {
     width: 100%;
     max-width: 100%;
     padding: 0 10px;
   }
 
-  .header > .hero {
+  .container > .header > .hero {
     font-size: 3.5em;
   }
 
-  .header > .caption {
+  .container > .header > .caption {
     font-size: 1em;
   }
 }
