@@ -6,10 +6,10 @@ import 'sanitize.css';
 import '../assets/styles/global.css';
 import favicon from '../assets/images/icon.png';
 
-const TemplateWrapper = ({ children }) => (
+const TemplateWrapper = ({ children, data }) => (
   <div className="application">
     <Helmet>
-      <title>walex</title>
+      <title>{ data.site.siteMetadata.title }</title>
       <link rel="icon" type="image/png" href={ favicon } />
     </Helmet>
     {children()}
@@ -18,6 +18,17 @@ const TemplateWrapper = ({ children }) => (
 
 TemplateWrapper.propTypes = {
   children: PropTypes.func.isRequired,
+  data: PropTypes.shape({}).isRequired,
 };
 
 export default TemplateWrapper;
+
+export const query = graphql`
+  query LayoutQuery {
+    site {
+      siteMetadata {
+        title
+      }
+    }
+  }
+`;

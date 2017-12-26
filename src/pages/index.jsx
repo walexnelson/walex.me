@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import styles from './index.module.css';
 import { SocialLinks } from '../components';
@@ -37,14 +38,7 @@ export default class HomePage extends Component {
   }
 
   render() {
-    const caption = 'Software Architect @ Domo  •  Building Cool Stuff with ReactJS';
-    const accounts = [
-      { name: 'Twitter', link: 'https://twitter.com/w_alexnelson', fa: 'fa-twitter' },
-      { name: 'Instagram', link: 'https://www.instagram.com/walexnelson', fa: 'fa-instagram' },
-      { name: 'Facebook', link: 'https://www.facebook.com/walexnelson', fa: 'fa-facebook' },
-      { name: 'LinkedIn', link: 'https://www.linkedin.com/in/walexnelson/', fa: 'fa-linkedin' },
-      { name: 'Github', link: 'https://github.com/walexnelson', fa: 'fa-github' },
-    ];
+    const { home, accounts } = this.props.data.site.siteMetadata;
 
     return (
       <div className={ styles.container }>
@@ -52,8 +46,8 @@ export default class HomePage extends Component {
         <div className={ styles.loaded } style={ this.getLoadedImageStyle() } />
 
         <header className={ styles.header } style={ this.getLoadedStyle() }>
-          <h1 className={ styles.hero }>Alex Nelson</h1>
-          <p className={ styles.caption }>{ caption }</p>
+          <h1 className={ styles.hero }>{ home.title }</h1>
+          <p className={ styles.caption }>{ home.caption }</p>
         </header>
         <div className={ styles.linkContainer } style={ this.getLoadedStyle() }>
           <SocialLinks accounts={ accounts } />
@@ -62,3 +56,34 @@ export default class HomePage extends Component {
     );
   }
 }
+
+HomePage.propTypes = {
+  data: PropTypes.shape({
+    site: PropTypes.shape({
+      siteMetadata: PropTypes.shape({
+        home: PropTypes.shape({}),
+        accounts: PropTypes.shape({}),
+      }),
+    }),
+  }).isRequired,
+};
+
+export const query = graphql`
+  query HomeQuery {
+    site {
+      siteMetadata {
+        home {
+          title,
+          caption
+        },
+        accounts {
+          Twitter,
+          Facebook,
+          LinkedIn,
+          Instagram,
+          Github,
+        }
+      }
+    }
+  }
+`;

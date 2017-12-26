@@ -5,11 +5,18 @@ import styles from './styles.module.css';
 
 class SocialLinks extends Component {
   renderAccounts() {
-    return this.props.accounts.map(account => (
-      <div className={ styles.linkContainer } key={ account.name }>
-        <LinkIcon fa={ account.fa } link={ account.link } name={ account.name } />
-      </div>
-    ));
+    const { accounts } = this.props;
+    const keys = Object.keys(accounts);
+
+    return keys.map((account) => {
+      const className = `fa fa-${account.toLowerCase()}`;
+
+      return (
+        <div className={ styles.linkContainer } key={ account }>
+          <LinkIcon fa={ className } link={ accounts[account] } name={ account } />
+        </div>
+      );
+    });
   }
 
   render() {
@@ -24,7 +31,7 @@ class SocialLinks extends Component {
 }
 
 SocialLinks.propTypes = {
-  accounts: PropTypes.arrayOf(PropTypes.object).isRequired,
+  accounts: PropTypes.shape({}).isRequired,
 };
 
 export default SocialLinks;
