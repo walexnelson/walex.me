@@ -6,10 +6,11 @@
   align-items: center;
   justify-content: center;
   color: #FFF;
+  background-color: #25465A;
 }
 
-.container > .preload,
-.container > .loaded {
+.preload,
+.loaded {
   width: 100%;
   height: 100%;
   position: absolute;
@@ -19,28 +20,26 @@
   background-repeat: no-repeat;
   background-position: center center;
   background-size: auto, cover;
-}
-
-.container > .preload {
-  background-color: #25465A;
-  background-image: linear-gradient(to top, rgba(92, 177, 255, 0.5), rgba(92, 177, 255, 0.3)), url(../assets/images/unsplash200.png);
+  transition: opacity 1.5s ease-in-out;
   overflow: hidden;
 }
 
-.container > .loaded {
-  background-image: linear-gradient(to top, rgba(92, 177, 255, 0.5), rgba(92, 177, 255, 0.3)), url(../assets/images/unsplash1500.png);
-  transition: opacity 1s ease-in;
-  opacity: 0;
+.preload {
+  background-image: linear-gradient(to top, rgba(92, 177, 255, 0.5), rgba(92, 177, 255, 0.3)), url(../assets/images/unsplash200.png);
 }
 
-.container > .linkContainer {
+.loaded {
+  background-image: linear-gradient(to top, rgba(92, 177, 255, 0.5), rgba(92, 177, 255, 0.3)), url(../assets/images/unsplash1500.png);
+}
+
+.linkContainer {
   width: 50%;
   max-width: 450px;
   opacity: 0;
   transition: opacity 1.5s ease-in 0.7s;
 }
 
-.container > .header {
+.header {
   width: 50%;
   max-width: 600px;
   text-align: center;
@@ -48,21 +47,23 @@
   top: 250px;
   opacity: 0;
   transition: opacity 0.6s ease-in 0.5s, top 0.8s linear;
+  font-family: 'Merriweather Sans', 'sans-serif';
+  color: #fff;
 }
 
-.container > .header > .hero {
+.header > .hero {
   font-size: 4.3em;
   font-weight: 900;
   letter-spacing: -0.03em;
   line-height: 1em;
+  color: #fff;
 }
 
-.container > .header > .caption {
+.header > .caption {
   font-size: 1.25em;
   margin: 0.75em 0 0.25em 0;
   opacity: 0.75;
 }
-
 
 @media screen and (max-width: 750px) {
   .container > .header, .linkContainer {

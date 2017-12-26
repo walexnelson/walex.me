@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import 'sanitize.css';
 
-import '../assets/styles/global.css';
+import './main.css';
 import favicon from '../assets/images/icon.png';
 
 const TemplateWrapper = ({ children, data }) => (

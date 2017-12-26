@@ -3,53 +3,40 @@ import PropTypes from 'prop-types';
 
 import styles from './index.module.css';
 import { SocialLinks } from '../components';
-import BackgroundImage from '../assets/images/unsplash1500.png';
+
+const transitionStyles = {
+  loading: { opacity: 0 },
+  loaded: { opacity: 1, top: 0 },
+};
+
+const placeholderTransitions = {
+  loading: { opacity: 1 },
+  loaded: { opacity: 0 },
+};
 
 export default class HomePage extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { show: false };
-    this.getLoadedImageStyle = this.getLoadedImageStyle.bind(this);
-    this.getLoadedStyle = this.getLoadedStyle.bind(this);
-  }
-
-  componentDidMount() {
-    setTimeout(() => { this.setState({ show: true }); }, 2500);
-
-    const hdLoaderImg = new Image();
-    hdLoaderImg.src = BackgroundImage;
-
-    hdLoaderImg.onload = () => {
-      this.setState({ image: BackgroundImage });
-    };
-  }
-
-  getLoadedImageStyle() {
-    return (typeof this.state.image === 'undefined')
-      ? {}
-      : { opacity: 1 };
-  }
-
-  getLoadedStyle() {
-    return (this.state.show)
-      ? { opacity: 1, top: 0 }
-      : {};
+    this.state = { state: 'loading' };
+    setInterval(() => { this.setState({ state: 'loaded' }); }, 1000);
   }
 
   render() {
+    const { state } = this.state;
     const { home, accounts } = this.props.data.site.siteMetadata;
 
     return (
       <div className={ styles.container }>
-        <div className={ styles.preload } />
-        <div className={ styles.loaded } style={ this.getLoadedImageStyle() } />
+        <div className={ styles.preload } style={ placeholderTransitions[state] } />
+        <div className={ styles.loaded } style={ transitionStyles[state] } />
 
-        <header className={ styles.header } style={ this.getLoadedStyle() }>
+        <header className={ styles.header } style={ transitionStyles[state] }>
           <h1 className={ styles.hero }>{ home.title }</h1>
           <p className={ styles.caption }>{ home.caption }</p>
         </header>
-        <div className={ styles.linkContainer } style={ this.getLoadedStyle() }>
+
+        <div className={ styles.linkContainer } style={ transitionStyles[state] }>
           <SocialLinks accounts={ accounts } />
         </div>
       </div>

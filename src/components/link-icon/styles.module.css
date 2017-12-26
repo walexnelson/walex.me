@@ -16,6 +16,7 @@
 .icon {
   text-decoration: none;
   position: relative;
+  color: transparent;
 }
 
 .icon:hover:before {
