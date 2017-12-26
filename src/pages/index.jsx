@@ -18,8 +18,11 @@ export default class HomePage extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { state: 'loading' };
-    setInterval(() => { this.setState({ state: 'loaded' }); }, 1000);
+    // TODO: figure out JS intervals in Gatsby
+    // this.state = { state: 'loading' };
+    // setInterval(() => { this.setState({ state: 'loaded' }); }, 1000);
+
+    this.state = { state: 'loaded' };
   }
 
   render() {

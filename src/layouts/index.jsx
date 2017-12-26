@@ -9,7 +9,7 @@ import favicon from '../assets/images/icon.png';
 const TemplateWrapper = ({ children, data }) => (
   <div className="application">
     <Helmet>
-      <title>{ data.site.siteMetadata.title }</title>
+      <title>{ `${data.site.siteMetadata.title}: just me...` }</title>
       <link rel="icon" type="image/png" href={ favicon } />
     </Helmet>
     {children()}
