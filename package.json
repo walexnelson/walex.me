@@ -1,6 +1,6 @@
 {
-  "name": "gatsby-starter-hello-world",
-  "description": "Gatsby hello world starter",
+  "name": "walex.me",
+  "description": "My personal site",
   "license": "MIT",
   "scripts": {
     "reset": "rm -rf ./node_modules && yarn",
