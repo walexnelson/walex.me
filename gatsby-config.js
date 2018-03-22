@@ -3,7 +3,9 @@ module.exports = {
     title: 'walex',
     home: {
       title: 'Alex Nelson',
-      caption: 'Software Engineer @ Clip.mx  •  Building Cool Stuff with ReactJS',
+      caption: `
+        Husband  •  Father  •  Software Engineer @ Clip.mx  •  Building Cool Stuff with React
+      `,
     },
     accounts: {
       Twitter: 'https://twitter.com/w_alexnelson',
