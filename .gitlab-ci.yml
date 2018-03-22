@@ -9,7 +9,7 @@ cache:
 pages:
   script:
   - yarn install
-  - ./node_modules/.bin/gatsby build
+  - yarn build
   artifacts:
     paths:
     - public
