@@ -10,9 +10,11 @@ const HomePage = (props) => {
 
   return (
     <div className={ styles.container }>
-      <Unsplash src={ bgImage } />
-      <Header title={ home.title } caption={ home.caption } />
-      <SocialLinks accounts={ accounts } />
+      <main className={ styles.hero }>
+        <Unsplash image={ bgImage } />
+        <Header title={ home.title } caption={ home.caption } />
+        <SocialLinks accounts={ accounts } />
+      </main>
     </div>
   );
 };

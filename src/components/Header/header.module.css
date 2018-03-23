@@ -7,18 +7,21 @@
   z-index: 1;
 }
 
-.header > .hero {
+.hero {
   font-size: 4.3em;
   font-weight: 900;
   letter-spacing: -0.03em;
   line-height: 1em;
   color: #fff;
+  opacity: 0;
+  transition: opacity 500ms ease-in-out;
 }
 
-.header > .caption {
+.caption {
   font-size: 1.25em;
   margin: 0.75em 0 0.25em 0;
   opacity: 0.75;
+  transition: opacity 700ms ease-in-out;
 }
 
 @media screen and (max-width: 750px) {

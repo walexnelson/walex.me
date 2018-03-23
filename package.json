@@ -1,5 +1,6 @@
 {
   "name": "walex.me",
+  "version": "0.0.1",
   "description": "My personal site",
   "license": "MIT",
   "scripts": {
@@ -18,7 +19,7 @@
     "gatsby-source-filesystem": "^1.5.27",
     "gatsby-transformer-sharp": "^1.6.22",
     "prop-types": "^15.6.0",
-    "react": "^16.2.0",
+    "react": "15.6.2",
     "react-helmet": "^5.2.0",
     "react-motion": "^0.5.2",
     "react-transition-group": "^2.2.1",
