@@ -3,7 +3,9 @@ module.exports = {
     title: 'walex',
     home: {
       title: 'Alex Nelson',
-      caption: 'Software Engineer @ Clip.mx  •  Building Cool Stuff with ReactJS',
+      caption: `
+        Husband  •  Father  •  Software Engineer @ Clip.mx  •  Building Cool Stuff with React
+      `,
     },
     accounts: {
       Twitter: 'https://twitter.com/w_alexnelson',
@@ -13,5 +15,16 @@ module.exports = {
       Github: 'https://github.com/walexnelson',
     },
   },
-  plugins: ['gatsby-plugin-react-helmet'],
+  plugins: [
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'img',
+        path: `${__dirname}/src/assets/images/`,
+      },
+    },
+    'gatsby-plugin-react-helmet',
+    'gatsby-transformer-sharp',
+    'gatsby-plugin-sharp',
+  ],
 };
