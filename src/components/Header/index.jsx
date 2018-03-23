@@ -31,7 +31,9 @@ class Header extends React.Component {
               <h1 className={ styles.hero } style={{ ...transitionStyles[state] }}>
                 { this.props.title }
               </h1>
-              <p className={ styles.caption } style={{ ...transitionStyles[state] }}>{ this.props.caption }</p>
+              <p className={ styles.caption } style={{ ...transitionStyles[state] }}>
+                { this.props.caption }
+              </p>
             </span>
           )}
         </Transition>
