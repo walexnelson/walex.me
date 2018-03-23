@@ -20,9 +20,12 @@
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-helmet": "^5.2.0",
+    "react-motion": "^0.5.2",
+    "react-transition-group": "^2.2.1",
     "sanitize.css": "^5.0.0"
   },
   "devDependencies": {
+    "babel-eslint": "^8.2.2",
     "eslint": "^4.13.1",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-import": "^2.8.0",
