@@ -5,6 +5,7 @@ import heroImage from '@/assets/hero.jpg'
 
 export function Hero() {
   const [scrolled, setScrolled] = useState(false)
+  const [imgLoaded, setImgLoaded] = useState(false)
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 50)
@@ -16,10 +17,16 @@ export function Hero() {
   return (
     <section className="relative h-screen min-h-[600px] flex flex-col justify-end px-6 pb-10 sm:px-14 sm:pb-14 overflow-hidden">
       {/* Background photo */}
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: `url(${heroImage})` }}
-      />
+      <div className="absolute inset-0">
+        <img
+          src={heroImage}
+          alt=""
+          fetchPriority="high"
+          decoding="async"
+          onLoad={() => setImgLoaded(true)}
+          className={`w-full h-full object-cover object-center transition-opacity duration-700 ${imgLoaded ? 'opacity-100' : 'opacity-0'}`}
+        />
+      </div>
       {/* Dark overlay */}
       <div className="absolute inset-0 bg-black/20" />
       {/* Gradient fade to page background at bottom */}
