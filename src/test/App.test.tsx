@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import { SocialLinks } from '../components/SocialLinks'
+import { Footer } from '../components/Footer'
 
 describe('SocialLinks', () => {
   it('renders all four social links', () => {
@@ -24,5 +25,18 @@ describe('SocialLinks', () => {
       'href',
       'https://github.com/walexnelson'
     )
+  })
+})
+
+describe('Footer', () => {
+  it('renders the site name', () => {
+    render(<Footer />)
+    expect(screen.getByText('WALEX.ME')).toBeInTheDocument()
+  })
+
+  it('renders the copyright year', () => {
+    render(<Footer />)
+    const year = new Date().getFullYear()
+    expect(screen.getByText(`© ${year} Alex Nelson`)).toBeInTheDocument()
   })
 })
