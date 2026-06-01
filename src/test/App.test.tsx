@@ -2,6 +2,7 @@ import { describe, it, expect } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import { SocialLinks } from '../components/SocialLinks'
 import { Footer } from '../components/Footer'
+import { About } from '../components/About'
 
 describe('SocialLinks', () => {
   it('renders all four social links', () => {
@@ -38,5 +39,31 @@ describe('Footer', () => {
     render(<Footer />)
     const year = new Date().getFullYear()
     expect(screen.getByText(`© ${year} Alex Nelson`)).toBeInTheDocument()
+  })
+})
+
+describe('About', () => {
+  it('renders the heading', () => {
+    render(<About />)
+    expect(screen.getByText("Hi, I'm Alex.")).toBeInTheDocument()
+  })
+
+  it('renders the gravatar image with correct src', () => {
+    render(<About />)
+    const img = screen.getByAltText('Alex Nelson')
+    expect(img).toHaveAttribute(
+      'src',
+      'https://www.gravatar.com/avatar/8ad72a6d9df91e7cdb79fd88a5f4cb4d?s=240&d=retro'
+    )
+  })
+
+  it('renders the location', () => {
+    render(<About />)
+    expect(screen.getByText('Lehi, Utah')).toBeInTheDocument()
+  })
+
+  it('renders the first bio paragraph', () => {
+    render(<About />)
+    expect(screen.getByText(/getting to the heart of complex problems/)).toBeInTheDocument()
   })
 })
