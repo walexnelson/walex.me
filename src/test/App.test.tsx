@@ -3,6 +3,7 @@ import { render, screen } from '@testing-library/react'
 import { SocialLinks } from '../components/SocialLinks'
 import { Footer } from '../components/Footer'
 import { About } from '../components/About'
+import { Hero } from '../components/Hero'
 
 describe('SocialLinks', () => {
   it('renders all four social links', () => {
@@ -65,5 +66,30 @@ describe('About', () => {
   it('renders the first bio paragraph', () => {
     render(<About />)
     expect(screen.getByText(/getting to the heart of complex problems/)).toBeInTheDocument()
+  })
+})
+
+// Mock the hero image asset — Vitest returns the module path for static assets
+vi.mock('@/assets/hero.jpg', () => ({ default: '/src/assets/hero.jpg' }))
+
+describe('Hero', () => {
+  it('renders the name', () => {
+    render(<Hero />)
+    expect(screen.getByText('Alex Nelson')).toBeInTheDocument()
+  })
+
+  it('renders the tagline highlight', () => {
+    render(<Hero />)
+    expect(screen.getByText('Building software.')).toBeInTheDocument()
+  })
+
+  it('renders the tagline remainder', () => {
+    render(<Hero />)
+    expect(screen.getByText('Raising kids. Breaking things with AI.')).toBeInTheDocument()
+  })
+
+  it('renders social links inside hero', () => {
+    render(<Hero />)
+    expect(screen.getByLabelText('GitHub')).toBeInTheDocument()
   })
 })
