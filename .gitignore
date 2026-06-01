@@ -62,5 +62,6 @@ typings/
 .env
 
 .cache/
-public
+# public/ is the static assets source for Vite — do NOT ignore it
+# (old Gatsby projects used /public as build output, but not this one)
 yarn-error.log

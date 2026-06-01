@@ -8,6 +8,7 @@ export function Hero() {
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 50)
+    handler() // check initial scroll position
     window.addEventListener('scroll', handler, { passive: true })
     return () => window.removeEventListener('scroll', handler)
   }, [])
@@ -33,8 +34,10 @@ export function Hero() {
           {siteConfig.name}
         </h1>
         <p className="text-lg text-zinc-400 mb-10 max-w-md animate-fade-up-d2">
-          <span className="text-zinc-50 font-medium">Building software.</span>{' '}
-          Raising kids. Breaking things with AI.
+          <span className="text-zinc-50 font-medium">
+            {siteConfig.tagline.split('. ').slice(0, 1).join('. ')}.
+          </span>{' '}
+          {siteConfig.tagline.split('. ').slice(1).join('. ')}
         </p>
         <SocialLinks />
       </div>
