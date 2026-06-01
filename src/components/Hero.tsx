@@ -21,7 +21,7 @@ export function Hero() {
         style={{ backgroundImage: `url(${heroImage})` }}
       />
       {/* Dark overlay */}
-      <div className="absolute inset-0 bg-black/60" />
+      <div className="absolute inset-0 bg-black/35" />
       {/* Gradient fade to page background at bottom */}
       <div className="absolute inset-0 bg-gradient-to-t from-[#09090b] via-[#09090b]/30 to-transparent" />
 
