@@ -14,7 +14,7 @@ export function Hero() {
   }, [])
 
   return (
-    <section className="relative h-screen min-h-[600px] flex flex-col justify-end px-14 pb-14 overflow-hidden">
+    <section className="relative h-screen min-h-[600px] flex flex-col justify-end px-6 pb-10 sm:px-14 sm:pb-14 overflow-hidden">
       {/* Background photo */}
       <div
         className="absolute inset-0 bg-cover bg-center"
@@ -44,7 +44,7 @@ export function Hero() {
 
       {/* Scroll indicator */}
       <div
-        className={`absolute bottom-8 right-14 flex flex-col items-center gap-2 transition-opacity duration-500 ${
+        className={`absolute bottom-8 right-6 sm:right-14 flex flex-col items-center gap-2 transition-opacity duration-500 ${
           scrolled ? 'opacity-0 pointer-events-none' : 'opacity-100'
         }`}
         aria-hidden="true"

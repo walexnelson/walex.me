@@ -4,9 +4,9 @@ export function About() {
   const gravatarUrl = `https://www.gravatar.com/avatar/${siteConfig.gravatarHash}?s=240&d=retro`
 
   return (
-    <section id="about" className="px-14 py-24 max-w-5xl mx-auto">
-      <div className="grid grid-cols-[auto_1fr] gap-16 items-start">
-        <div className="flex flex-col items-center gap-3 flex-shrink-0">
+    <section id="about" className="px-6 py-16 sm:px-14 sm:py-24 max-w-5xl mx-auto">
+      <div className="grid grid-cols-1 sm:grid-cols-[auto_1fr] gap-8 sm:gap-16 items-start">
+        <div className="flex flex-row sm:flex-col items-center gap-4 sm:gap-3 flex-shrink-0">
           <div className="w-32 h-32 rounded-full overflow-hidden border-2 border-zinc-700 ring-4 ring-zinc-800/50">
             <img
               src={gravatarUrl}
