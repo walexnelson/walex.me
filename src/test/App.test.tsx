@@ -4,6 +4,7 @@ import { SocialLinks } from '../components/SocialLinks'
 import { Footer } from '../components/Footer'
 import { About } from '../components/About'
 import { Hero } from '../components/Hero'
+import App from '../App'
 
 describe('SocialLinks', () => {
   it('renders all four social links', () => {
@@ -91,5 +92,14 @@ describe('Hero', () => {
   it('renders social links inside hero', () => {
     render(<Hero />)
     expect(screen.getByLabelText('GitHub')).toBeInTheDocument()
+  })
+})
+
+describe('App (integration)', () => {
+  it('renders hero and about sections', () => {
+    render(<App />)
+    expect(screen.getByText('Alex Nelson')).toBeInTheDocument()
+    expect(screen.getByText("Hi, I'm Alex.")).toBeInTheDocument()
+    expect(screen.getByText('WALEX.ME')).toBeInTheDocument()
   })
 })
